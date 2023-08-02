@@ -1,0 +1,26 @@
+
+{% extends 'blog_turma/base.html' %}
+{% block content %}
+                {% for post in posts %}
+                    <div  class="post " >
+                        
+                        <div class="d-flex justify-content-between align-items-center mb-5 p-4 ">
+                            <h2><a href="{% url 'post_detail' pk=post.pk %}" class="display-4 ">{{ post.title }}</a></h2>
+                            
+
+                        </div>
+                        <!-- <p >{{ post.text|linebreaksbr }}</p> -->
+                        {% if post.image %}
+                        <a href="{% url 'post_detail' pk=post.pk %}"><img src="{{ post.image.url }}" alt="Imagem do post" class="w-75 pb-5 ps-5 ms-5"></a>
+                        
+                        <div class="date mt-5 text-end">
+                            {{ post.published_date }}
+                        </div>
+                     
+                        {% endif %}
+                        <hr>
+                    </div>
+                {% endfor %}
+               
+                
+{% endblock %}   
